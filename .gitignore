@@ -1,0 +1,5 @@
+documents
+prisma/generated
+node_modules
+logs.log
+.env

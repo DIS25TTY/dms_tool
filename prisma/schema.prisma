@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model map_customer {
+  id              String    @unique @db.Uuid
+  user_id         String?   @db.Uuid
+  order_id        String?   @unique @db.Uuid
+  vehicle_id      String?   @db.Uuid
+  status          String?   @db.VarChar(255)
+  vin             String?   @unique @db.VarChar(255)
+  delivery_photos String?   @db.VarChar(500)
+  feedback        String?   @db.VarChar(255)
+  tc_document     String?   @db.VarChar(255)
+  created_at      DateTime  @db.Timestamp()
+  updated_at      DateTime  @updatedAt @db.Timestamp()
+  lock_expires    DateTime? @db.Timestamp()
+  locked_by       String?   @db.VarChar(255)
+}
+
+model track_stage {
+  id         String @db.Uuid
+  order_id   String @unique @db.Uuid
+  stage      String @db.VarChar(255)
+  sub_stage  String @db.VarChar(255)
+  created_at String @db.VarChar(255)
+  updated_at String @db.VarChar(255)
+}
+
+model payment {
+  id         String @unique @db.Uuid
+  order_id   String @unique @db.Uuid
+  user_id    String @db.Uuid
+  status     String @db.VarChar(255)
+  created_at String @db.VarChar(255)
+  updated_at String @db.VarChar(255)
+}
+
+model payment_info {
+  id             String   @unique @db.Uuid
+  payment_id     String   @db.Uuid
+  transaction_id String   @db.Uuid
+  amount         String   @db.VarChar(255)
+  proof          String   @db.VarChar(255)
+  source         String   @db.VarChar(255)
+  method         String   @db.VarChar(255)
+  status         String   @db.VarChar(255)
+  created_at     DateTime @db.Timestamp()
+  updated_at     DateTime @updatedAt @db.Timestamp()
+}

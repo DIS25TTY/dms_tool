@@ -1,0 +1,48 @@
+{
+  "name": "se-dms-service",
+  "version": "v1.0.2+5",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npx prisma generate",
+    "test": "jest",
+    "start": "node ./src/server.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon ./src/server.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/schema": "^10.0.2",
+    "@graphql-tools/utils": "^10.0.10",
+    "@prisma/client": "^5.6.0",
+    "apollo-server": "^3.13.0",
+    "apollo-server-express": "^3.13.0",
+    "axios": "^1.6.2",
+    "cls-rtracer": "^2.6.3",
+    "cors": "^2.8.5",
+    "cron": "^3.1.6",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "graphql": "^16.8.1",
+    "graphql-constraint-directive": "^5.3.0",
+    "graphql-http": "^1.22.0",
+    "graphql-upload-minimal": "^1.5.5",
+    "mqtt": "^5.3.4",
+    "node-cron": "^3.0.3",
+    "path": "^0.12.7",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "morgan": "^1.10.0",
+    "pino": "^8.16.2",
+    "pino-pretty": "^10.2.3",
+    "prisma": "^5.6.0",
+    "supertest": "^6.3.3"
+  }
+}

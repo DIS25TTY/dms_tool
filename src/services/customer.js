@@ -78,8 +78,9 @@ class customerDetails {
 
   getCustomerDetailsByPhone = async ({ mobile_number }) => {
     try {
-      if (!mobile_number || mobile_number.length != 13) {
-        throw new CustomError("Enter valid mobile number");
+      const mobileRegex = /^\+91\d{10}$/;
+      if (!mobileRegex.test(mobile_number)) {
+        throw new CustomError("Enter valid mobile number in the right format +91 ");
       }
 
       let body = this.queryBuilder(mobile_number);

@@ -175,7 +175,17 @@ class vehicleDetails {
       if (!locked_by) {
         throw new CustomError("Dealer details needed");
       }
+  
+    // Check if the VIN exists in the database
+    const vinExists = await prisma.map_customer.findFirst({
+      where: {
+        vin: vin,
+      },
+    });
 
+    if (!vinExists) {
+      throw new CustomError("VIN does not exist");
+    }
       //check if vin already allocated
       const vinCheck = await prisma.map_customer.findFirst({
         where: {
